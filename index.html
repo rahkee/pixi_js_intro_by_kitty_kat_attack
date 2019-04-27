@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+
+    <style>
+        * { padding: 0; margin: 0;}
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" src="pixi.min.js"></script>
+    <script>
+        //Create a Pixi Application
+        let app = new PIXI.Application({ antialias: true });
+
+        //Add the canvas that Pixi automatically created for you to the HTML document
+        document.body.appendChild(app.view);
+
+        app.renderer.autoResize = true;
+        app.renderer.resize(window.innerWidth, window.innerHeight);
+
+        //load an image and run the `setup` function when it's done
+        // PIXI.loader.add("BigMonster12.png").load(setup);
+
+       let texture = PIXI.utils.TextureCache["BigMonster12.png"];
+       let spriteMob1 = new PIXI.Sprite(texture);
+
+        PIXI.loader.add("BigMonster12.png");
+       
+
+        //This `setup` function will run when the image has loaded
+        function setup() {
+            //Create the cat sprite
+            let cat = new PIXI.Sprite(PIXI.loader.resources["BigMonster12.png"].texture);
+            //Add the cat to the stage
+            app.stage.addChild(cat);
+        }
+    </script>
+</body>
+
+</html>
